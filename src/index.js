@@ -2,21 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const mensaje = "abelito";
-const color = "blue";
+const color = "green";
 const sesion = true;
 const pais = "";
-const amigos = ["alex","eli","silvia","oscar","kary","zeno","china","abel"];
+const amigos = ["alex","eli","silvia","oscar","kary"];
 
 //dentro de jsx las condicionales son diferentes ? significa entonces : significa "else"
 //para la linea de pais se && como condicional de si existe se muestra osea si existe algun pais entonces se muestra 
 //pais && ----------
 //para el map(amigo,index) podemos dar index como parametro de numeracion 
 
-const JSX = (
+//construyendo una componete que no es otra cosa que una funcion
 
-  <div>
-      {sesion === true ? 
-      <div>
+const Usuario = ()=>{
+
+return(
+<div>
       <p>has iniciado sesion</p>
       <h1 className = "titulo" style ={{color : color}}>!!!hola!!! {mensaje} </h1> 
       <p>tu lista de amigos:</p>
@@ -28,6 +29,22 @@ const JSX = (
           }
       </ul>
       </div>
+);
+
+};
+//el JSX
+const JSX = (
+
+  <div>
+      {sesion === true ? 
+      <>
+        <Usuario />
+        <Usuario />
+        <Usuario />
+        <Usuario />
+        <Usuario />
+      
+      </>
       :
       <p>NO!!! has iniciado sesion</p>}
       
@@ -39,10 +56,13 @@ const JSX = (
 ReactDOM.render( JSX , document.getElementById('root')
 );
 
-/*ReactDOM.render(
-  <React.StrictMode>
-    <h1>hola mundo!!!! </h1>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+/*ojo en la linea 26
+<Usuario />
+{amigos.map((amigo,index)=> {
+              return <li key={index}>{amigo}</li>
+              })
+              
+TAMBIEN SE PUEDE PONER DE LA SIGUIENTE MANERA SIN EL RETURN
+{amigos.map((amigo,index) => <li key={index}>{amigo}</li>)}
+
 */

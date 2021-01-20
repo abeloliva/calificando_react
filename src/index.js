@@ -1,17 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
+const mensaje = "abelito";
+const color = "blue";
+const sesion = true;
+const pais = "";
+const amigos = ["alex","eli","silvia","oscar","kary","zeno","china","abel"];
+
+//dentro de jsx las condicionales son diferentes ? significa entonces : significa "else"
+//para la linea de pais se && como condicional de si existe se muestra osea si existe algun pais entonces se muestra 
+//pais && ----------
+//para el map(amigo,index) podemos dar index como parametro de numeracion 
+
+const JSX = (
+
+  <div>
+      {sesion === true ? 
+      <div>
+      <p>has iniciado sesion</p>
+      <h1 className = "titulo" style ={{color : color}}>!!!hola!!! {mensaje} </h1> 
+      <p>tu lista de amigos:</p>
+      {pais && <p>yo soy de: {pais}</p>}
+      <ul>
+          {amigos.map((amigo,index)=> {
+              return <li key={index}>{amigo}</li>
+          })
+          }
+      </ul>
+      </div>
+      :
+      <p>NO!!! has iniciado sesion</p>}
+      
+  </div>
+);
+
+
+
+ReactDOM.render( JSX , document.getElementById('root')
+);
+
+/*ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <h1>hola mundo!!!! </h1>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+*/
